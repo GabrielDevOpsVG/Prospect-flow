@@ -22,7 +22,9 @@ interface Prospect {
   name: string
   address: string | null
   city: string
+  state?: string
   phone: string | null
+  raw_phone?: string | null
   whatsapp: string | null
   website: string | null
   email: string | null
