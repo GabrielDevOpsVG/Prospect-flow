@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { ProspectResultsTable } from "@/components/prospect-results-table"
 import { Button } from "@/components/ui/button"
@@ -9,7 +9,7 @@ import Link from "next/link"
 import { createClient } from "@/lib/supabase/client"
 import type { Prospect } from "@/types/prospect"
 
-export default function SearchResultsPage() {
+function SearchResultsContent() {
   const searchParams = useSearchParams()
   const niche = searchParams.get("niche") || ""
   const city = searchParams.get("city") || ""
@@ -215,5 +215,20 @@ export default function SearchResultsPage() {
         />
       )}
     </div>
+  )
+}
+
+export default function SearchResultsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex flex-col items-center justify-center py-24 gap-4 text-muted-foreground">
+          <Loader2 className="w-10 h-10 animate-spin text-primary" />
+          <p className="text-lg font-medium">Carregando resultados...</p>
+        </div>
+      }
+    >
+      <SearchResultsContent />
+    </Suspense>
   )
 }
