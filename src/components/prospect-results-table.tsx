@@ -1,7 +1,6 @@
 "use client"
 
-import { useState, useCallback } from "react"
-import { useRouter } from "next/navigation"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -9,34 +8,7 @@ import {
   Download, PlusCircle, Loader2, CheckCircle2, MessageSquare,
   Search, AlertCircle
 } from "lucide-react"
-
-interface Contact {
-  name: string
-  role: string
-  email: string | null
-  phone: string | null
-}
-
-interface Prospect {
-  id: string
-  name: string
-  address: string | null
-  city: string
-  state?: string
-  phone: string | null
-  raw_phone?: string | null
-  whatsapp: string | null
-  website: string | null
-  email: string | null
-  type: string | null
-  rating: number | null
-  contacts: Contact[]
-  source: string
-  place_id?: string
-  data_id?: string
-  enriching?: boolean
-  enriched?: boolean
-}
+import type { Prospect } from "@/types/prospect"
 
 interface ResultsTableProps {
   results: Prospect[]

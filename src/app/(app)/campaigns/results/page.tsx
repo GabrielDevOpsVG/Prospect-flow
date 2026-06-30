@@ -7,35 +7,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft, Loader2, AlertCircle, RefreshCw } from "lucide-react"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/client"
-
-interface Contact {
-  name: string
-  role: string
-  email: string | null
-  phone: string | null
-  source: string
-}
-
-interface Prospect {
-  id: string
-  name: string
-  address: string | null
-  city: string
-  state: string
-  phone: string | null
-  raw_phone: string | null
-  whatsapp: string | null
-  website: string | null
-  email: string | null
-  type: string | null
-  rating: number | null
-  contacts: Contact[]
-  source: string
-  place_id?: string
-  data_id?: string
-  enriching?: boolean
-  enriched?: boolean
-}
+import type { Prospect } from "@/types/prospect"
 
 export default function SearchResultsPage() {
   const searchParams = useSearchParams()
